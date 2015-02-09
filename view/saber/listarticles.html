@@ -1,0 +1,13 @@
+<ul id="article-list" class="container960 admin">
+    {{range .Articles}}
+    <li>
+        <span class="time">{{DateInt64 .CreateTime "MM.DD"}}</span><h4 class="inline-block title"><a href="{{.Link}}">{{.Title}}</a></h4>{{if ne .Status "publish"}}
+        <span class="lbl status">草稿</span>{{end}}
+        <span class="slug">{{.Slug}}</span>{{if eq .IsComment false}}
+        <span class="is-comment">关评</span>{{end}}
+        <span class="count">{{.CommentNum}} / {{.Hits}}</span>
+    </li>{{end}}
+</ul>
+<ul id="article-pager" class="pager container960">{{range .Pager.PageSlice}}
+    <li class="item{{if eq $.Pager.Current .}} current{{end}}"><a href="/articles/?page={{.}}">{{.}}</a></li>{{end}}
+</ul>
