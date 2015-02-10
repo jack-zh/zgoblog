@@ -24,6 +24,9 @@ var (
 	App              *GoInk.App
 	staticFileSuffix = ".css,.js,.jpg,.jpeg,.png,.gif,.ico,.xml,.zip,.txt,.html,.otf,.svg,.eot,.woff,.ttf,.doc,.ppt,.xls,.docx,.pptx,.xlsx,.xsl"
 	uploadFileSuffix = ".jpg,.png,.gif,.zip,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+	appServer = "localhost:8888"
+	appLogDir = "tmp/log"
+	appStaticDir = "static"
 )
 
 func init() {
@@ -31,8 +34,9 @@ func init() {
 	App = GoInk.New()
 
 	// init some settings
-	App.Config().StringOr("app.static_dir", "static")
-	App.Config().StringOr("app.log_dir", "tmp/log")
+	App.Config().StringOr("app.static_dir", appStaticDir)
+	App.Config().StringOr("app.log_dir", appLogDir)
+	App.Config().StringOr("app.server", appServer)
 	os.MkdirAll(App.Get("log_dir"), os.ModePerm)
 	os.MkdirAll("tmp/data", os.ModePerm)
 
@@ -67,11 +71,6 @@ func init() {
 				return
 			}
 		}
-		/*_, e := os.Stat(url)
-		if e != nil {
-			context.Throw(404)
-			return
-		}*/
 		http.ServeFile(context.Response, context.Request, url)
 		context.IsEnd = true
 	})
