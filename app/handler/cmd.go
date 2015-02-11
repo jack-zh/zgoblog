@@ -1,12 +1,12 @@
 package handler
 
 import (
-	"github.com/fuxiaohei/GoInk"
+	"github.com/jack-zh/zGoBlog/fweb"
 	"github.com/jack-zh/zGoBlog/app/cmd"
 	"github.com/jack-zh/zGoBlog/app/model"
 )
 
-func CmdBackup(context *GoInk.Context) {
+func CmdBackup(context *fweb.Context) {
 	if context.Method == "POST" {
 		file, e := cmd.DoBackup(context.App(), true)
 		if e != nil {
@@ -37,13 +37,13 @@ func CmdBackup(context *GoInk.Context) {
 	})
 }
 
-func CmdBackupFile(context *GoInk.Context) {
+func CmdBackupFile(context *fweb.Context) {
 	file := context.String("file")
 	context.Download(cmd.GetBackupFileAbsPath(file))
 	context.Do("backup_download", file)
 }
 
-func CmdMessage(context *GoInk.Context) {
+func CmdMessage(context *fweb.Context) {
 	context.Layout("admin/cmd")
 	context.Render("admin/cmd/message", map[string]interface{}{
 		"Title":    "消息",
@@ -51,7 +51,7 @@ func CmdMessage(context *GoInk.Context) {
 	})
 }
 
-func CmdLogs(context *GoInk.Context) {
+func CmdLogs(context *fweb.Context) {
 	if context.Method == "DELETE" {
 		cmd.RemoveLogFile(context.App(), context.String("file"))
 		Json(context, true).End()
@@ -64,7 +64,7 @@ func CmdLogs(context *GoInk.Context) {
 	})
 }
 
-func CmdMonitor(ctx *GoInk.Context) {
+func CmdMonitor(ctx *fweb.Context) {
 	ctx.Layout("admin/cmd")
 	ctx.Render("admin/cmd/monitor", map[string]interface{}{
 		"Title": "系统监控",
@@ -72,7 +72,7 @@ func CmdMonitor(ctx *GoInk.Context) {
 	})
 }
 
-func CmdTheme(ctx *GoInk.Context) {
+func CmdTheme(ctx *fweb.Context) {
 	if ctx.Method == "POST" {
 		change := ctx.String("cache")
 		if change != "" {
@@ -97,7 +97,7 @@ func CmdTheme(ctx *GoInk.Context) {
 	})
 }
 
-func CmdReader(ctx *GoInk.Context) {
+func CmdReader(ctx *fweb.Context) {
 	if ctx.Method == "POST" {
 		email := ctx.String("email")
 		model.RemoveReader(email)

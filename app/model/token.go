@@ -2,7 +2,7 @@ package model
 
 import (
 	"fmt"
-	"github.com/fuxiaohei/GoInk"
+	"github.com/jack-zh/zGoBlog/fweb"
 	"github.com/jack-zh/zGoBlog/app/utils"
 )
 
@@ -24,7 +24,7 @@ func (t *Token) IsValid() bool {
 }
 
 // create new token from user and context.
-func CreateToken(u *User, context *GoInk.Context, expire int64) *Token {
+func CreateToken(u *User, context *fweb.Context, expire int64) *Token {
 	t := new(Token)
 	t.UserId = u.Id
 	t.CreateTime = utils.Now()

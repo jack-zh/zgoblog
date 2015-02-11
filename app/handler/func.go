@@ -1,19 +1,19 @@
 package handler
 
 import (
-	"github.com/fuxiaohei/GoInk"
+	"github.com/jack-zh/zGoBlog/fweb"
 	"github.com/jack-zh/zGoBlog/app/model"
 	"path"
 	"strconv"
 )
 
 type jsonContext struct {
-	context *GoInk.Context
+	context *fweb.Context
 	data    map[string]interface{}
 }
 
 // Json creates a json context response.
-func Json(context *GoInk.Context, res bool) *jsonContext {
+func Json(context *fweb.Context, res bool) *jsonContext {
 	c := new(jsonContext)
 	c.context = context
 	c.data = make(map[string]interface{})
@@ -31,12 +31,12 @@ func (jc *jsonContext) End() {
 }
 
 type themeContext struct {
-	context *GoInk.Context
+	context *fweb.Context
 	theme   string
 }
 
 // Theme creates themed context response.
-func Theme(context *GoInk.Context) *themeContext {
+func Theme(context *fweb.Context) *themeContext {
 	t := new(themeContext)
 	t.context = context
 	t.theme = model.GetSetting("site_theme")
@@ -69,7 +69,7 @@ func (tc *themeContext) Has(tpl string) bool {
 }
 
 // CommentHtml returns rendered comment template html with own content.
-func CommentHtml(context *GoInk.Context, c *model.Content) string {
+func CommentHtml(context *fweb.Context, c *model.Content) string {
 	thm := Theme(context)
 	if !thm.Has("comment.html") {
 		return ""
@@ -81,7 +81,7 @@ func CommentHtml(context *GoInk.Context, c *model.Content) string {
 }
 
 // SidebarHtml returns rendered sidebar template html.
-func SidebarHtml(context *GoInk.Context) string {
+func SidebarHtml(context *fweb.Context) string {
 	thm := Theme(context)
 	if !thm.Has("sidebar.html") {
 		return ""

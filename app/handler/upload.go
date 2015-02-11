@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"github.com/fuxiaohei/GoInk"
+	"github.com/jack-zh/zGoBlog/fweb"
 	"github.com/jack-zh/zGoBlog/app/model"
 	"io/ioutil"
 	"net/http"
@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-func AdminFiles(context *GoInk.Context) {
+func AdminFiles(context *fweb.Context) {
 	if context.Method == "DELETE" {
 		id := context.Int("id")
 		model.RemoveFile(id)
@@ -28,7 +28,7 @@ func AdminFiles(context *GoInk.Context) {
 	})
 }
 
-func FileUpload(context *GoInk.Context) {
+func FileUpload(context *fweb.Context) {
 	var req *http.Request
 	req = context.Request
 	req.ParseMultipartForm(32 << 20)

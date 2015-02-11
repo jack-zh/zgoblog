@@ -2,7 +2,7 @@ package app
 
 import (
 	"fmt"
-	"github.com/fuxiaohei/GoInk"
+	"github.com/jack-zh/zGoBlog/fweb"
 	"github.com/jack-zh/zGoBlog/app/handler"
 	"github.com/jack-zh/zGoBlog/app/model"
 	"github.com/jack-zh/zGoBlog/app/plugin"
@@ -20,8 +20,8 @@ import (
 var (
 	// APP VERSION, as date version
 	VERSION = 20140228
-	// Global GoInk application
-	App              *GoInk.App
+	// Global fweb application
+	App              *fweb.App
 	staticFileSuffix = ".css,.js,.jpg,.jpeg,.png,.gif,.ico,.xml,.zip,.txt,.html,.otf,.svg,.eot,.woff,.ttf,.doc,.ppt,.xls,.docx,.pptx,.xlsx,.xsl"
 	uploadFileSuffix = ".jpg,.png,.gif,.zip,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
 	appServer = "localhost:8888"
@@ -31,7 +31,7 @@ var (
 
 func init() {
 	// init application
-	App = GoInk.New()
+	App = fweb.New()
 
 	// init some settings
 	App.Config().StringOr("app.static_dir", appStaticDir)
@@ -49,7 +49,7 @@ func init() {
 		staticFileSuffix = App.Get("static_files")
 	}
 
-	App.Static(func(context *GoInk.Context) {
+	App.Static(func(context *fweb.Context) {
 		static := App.Config().String("app.static_dir")
 		url := strings.TrimPrefix(context.Url, "/")
 		if url == "favicon.ico" {
@@ -76,7 +76,7 @@ func init() {
 	})
 
 	// set recover handler
-	App.Recover(func(context *GoInk.Context) {
+	App.Recover(func(context *fweb.Context) {
 		go LogError(append(append(context.Body, []byte("\n")...), debug.Stack()...))
 		theme := handler.Theme(context)
 		if theme.Has("error/error.html") {
@@ -95,7 +95,7 @@ func init() {
 	})
 
 	// set not found handler
-	App.NotFound(func(context *GoInk.Context) {
+	App.NotFound(func(context *fweb.Context) {
 		theme := handler.Theme(context)
 		if theme.Has("error/notfound.html") {
 			theme.Layout("").Render("error/notfound", map[string]interface{}{

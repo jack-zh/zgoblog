@@ -1,7 +1,7 @@
 package plugin
 
 import (
-	"github.com/fuxiaohei/GoInk"
+	"github.com/jack-zh/zGoBlog/fweb"
 	"github.com/jack-zh/zGoBlog/app/model"
 )
 
@@ -25,14 +25,14 @@ type PluginInterface interface {
 type pluginRoute struct {
 	Method  string
 	Pattern string
-	Handler GoInk.Handler
+	Handler fweb.Handler
 }
 
 var (
 	pluginStorage map[string]map[string]interface{}
 	pluginMap     map[string]PluginInterface
-	middleHandler map[string]GoInk.Handler
-	interHandler  map[string]GoInk.Handler
+	middleHandler map[string]fweb.Handler
+	interHandler  map[string]fweb.Handler
 	usedHandler   map[string]map[string]bool
 	routeHandler  map[string]pluginRoute
 )
@@ -43,9 +43,9 @@ func init() {
 	}
 	//pluginMap = make(map[string]PluginInterface)
 	pluginStorage = make(map[string]map[string]interface{})
-	middleHandler = make(map[string]GoInk.Handler)
+	middleHandler = make(map[string]fweb.Handler)
 	routeHandler = make(map[string]pluginRoute)
-	interHandler = make(map[string]GoInk.Handler)
+	interHandler = make(map[string]fweb.Handler)
 	usedHandler = make(map[string]map[string]bool)
 	usedHandler["middle"] = make(map[string]bool)
 	usedHandler["inter"] = make(map[string]bool)
@@ -89,7 +89,7 @@ func register(plugin PluginInterface) {
 	pluginMap[plugin.Key()] = plugin
 }
 
-func Handler(name string, h GoInk.Handler, inter bool) {
+func Handler(name string, h fweb.Handler, inter bool) {
 	if inter {
 		interHandler[name] = h
 	} else {
@@ -97,7 +97,7 @@ func Handler(name string, h GoInk.Handler, inter bool) {
 	}
 }
 
-func Route(name string, method string, pattern string, handler GoInk.Handler) {
+func Route(name string, method string, pattern string, handler fweb.Handler) {
 	pr := pluginRoute{}
 	pr.Method = method
 	pr.Handler = handler
@@ -105,8 +105,8 @@ func Route(name string, method string, pattern string, handler GoInk.Handler) {
 	routeHandler[name] = pr
 }
 
-func Handlers() (map[string]map[string]GoInk.Handler, map[string]pluginRoute) {
-	m := make(map[string]map[string]GoInk.Handler)
+func Handlers() (map[string]map[string]fweb.Handler, map[string]pluginRoute) {
+	m := make(map[string]map[string]fweb.Handler)
 	m["middle"] = middleHandler
 	m["inter"] = interHandler
 	return m, routeHandler
@@ -144,7 +144,7 @@ func Deactivate(name string) {
 	println("deactivate", p.Key())
 }
 
-func Update(app *GoInk.App) {
+func Update(app *fweb.App) {
 	pluginHandlers, routeHandlers := Handlers()
 
 	if len(routeHandlers) > 0 {

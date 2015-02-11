@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"github.com/fuxiaohei/GoInk"
+	"github.com/jack-zh/zGoBlog/fweb"
 	"github.com/jack-zh/zGoBlog/app/model"
 	"github.com/jack-zh/zGoBlog/app/plugin"
 	"github.com/jack-zh/zGoBlog/app/utils"
@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func Admin(context *GoInk.Context) {
+func Admin(context *fweb.Context) {
 	uid, _ := strconv.Atoi(context.Cookie("token-user"))
 	user := model.GetUserById(uid)
 	context.Layout("admin/admin")
@@ -21,7 +21,7 @@ func Admin(context *GoInk.Context) {
 	})
 }
 
-func AdminProfile(context *GoInk.Context) {
+func AdminProfile(context *fweb.Context) {
 	uid, _ := strconv.Atoi(context.Cookie("token-user"))
 	user := model.GetUserById(uid)
 	if context.Method == "POST" {
@@ -49,7 +49,7 @@ func AdminProfile(context *GoInk.Context) {
 	})
 }
 
-func AdminPassword(context *GoInk.Context) {
+func AdminPassword(context *fweb.Context) {
 	if context.Method == "POST" {
 		uid, _ := strconv.Atoi(context.Cookie("token-user"))
 		user := model.GetUserById(uid)
@@ -70,7 +70,7 @@ func AdminPassword(context *GoInk.Context) {
 	})
 }
 
-func AdminArticle(context *GoInk.Context) {
+func AdminArticle(context *fweb.Context) {
 	articles, pager := model.GetArticleList(context.Int("page"), 10)
 	context.Layout("admin/admin")
 	context.Render("admin/articles", map[string]interface{}{
@@ -80,7 +80,7 @@ func AdminArticle(context *GoInk.Context) {
 	})
 }
 
-func ArticleWrite(context *GoInk.Context) {
+func ArticleWrite(context *fweb.Context) {
 	if context.Method == "POST" {
 		c := new(model.Content)
 		c.Id = 0
@@ -116,7 +116,7 @@ func ArticleWrite(context *GoInk.Context) {
 	})
 }
 
-func ArticleEdit(context *GoInk.Context) {
+func ArticleEdit(context *fweb.Context) {
 	id, _ := strconv.Atoi(context.Param("id"))
 	c := model.GetContentById(id)
 	if c == nil {
@@ -156,7 +156,7 @@ func ArticleEdit(context *GoInk.Context) {
 	})
 }
 
-func PageWrite(context *GoInk.Context) {
+func PageWrite(context *fweb.Context) {
 	if context.Method == "POST" {
 		c := new(model.Content)
 		c.Id = 0
@@ -192,7 +192,7 @@ func PageWrite(context *GoInk.Context) {
 	})
 }
 
-func AdminPage(context *GoInk.Context) {
+func AdminPage(context *fweb.Context) {
 	pages, pager := model.GetPageList(context.Int("page"), 10)
 	context.Layout("admin/admin")
 	context.Render("admin/pages", map[string]interface{}{
@@ -202,7 +202,7 @@ func AdminPage(context *GoInk.Context) {
 	})
 }
 
-func PageEdit(context *GoInk.Context) {
+func PageEdit(context *fweb.Context) {
 	id, _ := strconv.Atoi(context.Param("id"))
 	c := model.GetContentById(id)
 	if c == nil {
@@ -242,7 +242,7 @@ func PageEdit(context *GoInk.Context) {
 	})
 }
 
-func AdminSetting(context *GoInk.Context) {
+func AdminSetting(context *fweb.Context) {
 	if context.Method == "POST" {
 		data := context.Input()
 		for k, v := range data {
@@ -266,7 +266,7 @@ func AdminSetting(context *GoInk.Context) {
 	})
 }
 
-func CustomSetting(context *GoInk.Context) {
+func CustomSetting(context *fweb.Context) {
 	keys := context.Strings("key")
 	values := context.Strings("value")
 	for i, k := range keys {
@@ -281,7 +281,7 @@ func CustomSetting(context *GoInk.Context) {
 	return
 }
 
-func NavigatorSetting(context *GoInk.Context) {
+func NavigatorSetting(context *fweb.Context) {
 	order := context.Strings("order")
 	text := context.Strings("text")
 	title := context.Strings("title")
@@ -292,7 +292,7 @@ func NavigatorSetting(context *GoInk.Context) {
 	return
 }
 
-func AdminComments(context *GoInk.Context) {
+func AdminComments(context *fweb.Context) {
 	if context.Method == "DELETE" {
 		id := context.Int("id")
 		cmt := model.GetCommentById(id)
@@ -344,7 +344,7 @@ func AdminComments(context *GoInk.Context) {
 	})
 }
 
-func AdminPlugin(context *GoInk.Context) {
+func AdminPlugin(context *fweb.Context) {
 	if context.Method == "POST" {
 		action := context.String("action")
 		if action == "" {
@@ -376,7 +376,7 @@ func AdminPlugin(context *GoInk.Context) {
 	})
 }
 
-func PluginSetting(context *GoInk.Context) {
+func PluginSetting(context *fweb.Context) {
 	key := context.Param("plugin_key")
 	if key == "" {
 		context.Redirect("/admin/plugins/")
@@ -400,7 +400,7 @@ func PluginSetting(context *GoInk.Context) {
 	})
 }
 
-func AdminMessageRead(context *GoInk.Context) {
+func AdminMessageRead(context *fweb.Context) {
 	id := context.Int("id")
 	if id < 0 {
 		Json(context, false).End()

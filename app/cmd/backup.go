@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"github.com/Unknwon/cae/zip"
-	"github.com/fuxiaohei/GoInk"
+	"github.com/jack-zh/zGoBlog/fweb"
 	"github.com/jack-zh/zGoBlog/app/model"
 	"github.com/jack-zh/zGoBlog/app/utils"
 	"os"
@@ -20,7 +20,7 @@ func init() {
 
 // DoBackup backups whole files to zip archive.
 // If withData is false, it compresses static files to zip archive without data files, config files and install lock file.
-func DoBackup(app *GoInk.App, withData bool) (string, error) {
+func DoBackup(app *fweb.App, withData bool) (string, error) {
 	os.Mkdir(backupDir, os.ModePerm)
 	// create zip file name from time unix
 	filename := path.Join(backupDir, utils.DateTime(time.Now(), "YYYYMMDDHHmmss"))
@@ -91,7 +91,7 @@ func GetBackupFiles() ([]os.FileInfo, error) {
 }
 
 // StartBackupTimer starts backup operation timer for auto backup stuff.
-func StartBackupTimer(app *GoInk.App, t int) {
+func StartBackupTimer(app *fweb.App, t int) {
 	model.SetTimerFunc("backup-data", 144, func() {
 		filename, e := DoBackup(app, true)
 		if e != nil {

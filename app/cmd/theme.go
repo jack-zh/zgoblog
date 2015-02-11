@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/fuxiaohei/GoInk"
+	"github.com/jack-zh/zGoBlog/fweb"
 	"github.com/jack-zh/zGoBlog/app/model"
 	"io/ioutil"
 	"path/filepath"
@@ -16,7 +16,7 @@ type themeItem struct {
 	Layout     []string
 }
 
-func SetThemeCache(ctx *GoInk.Context, cache bool) {
+func SetThemeCache(ctx *fweb.Context, cache bool) {
 	ctx.App().View().NoCache()
 	ctx.App().View().IsCache = cache
 	if cache {

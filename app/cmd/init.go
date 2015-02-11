@@ -1,7 +1,7 @@
 package cmd
 
-import "github.com/fuxiaohei/GoInk"
+import "github.com/jack-zh/zGoBlog/fweb"
 
-func Init(app *GoInk.App) {
+func Init(app *fweb.App) {
 	StartBackupTimer(app, 24)
 }

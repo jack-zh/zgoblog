@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"github.com/fuxiaohei/GoInk"
+	"github.com/jack-zh/zGoBlog/fweb"
 	"github.com/jack-zh/zGoBlog/app/model"
 	"github.com/jack-zh/zGoBlog/app/utils"
 	"net/url"
@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func Login(context *GoInk.Context) {
+func Login(context *fweb.Context) {
 	if context.Method == "POST" {
 		data := context.Input()
 		user := model.GetUserByName(data["user"])
@@ -36,7 +36,7 @@ func Login(context *GoInk.Context) {
 	context.Render("admin/login", nil)
 }
 
-func Auth(context *GoInk.Context) {
+func Auth(context *fweb.Context) {
 	tokenValue := context.Cookie("token-value")
 	token := model.GetTokenByValue(tokenValue)
 	if token == nil {
@@ -51,13 +51,13 @@ func Auth(context *GoInk.Context) {
 	}
 }
 
-func Logout(context *GoInk.Context) {
+func Logout(context *fweb.Context) {
 	context.Cookie("token-user", "", "-3600")
 	context.Cookie("token-value", "", "-3600")
 	context.Redirect("/login/")
 }
 
-func TagArticles(ctx *GoInk.Context) {
+func TagArticles(ctx *fweb.Context) {
 	ctx.Layout("home")
 	page, _ := strconv.Atoi(ctx.Param("page"))
 	tag, _ := url.QueryUnescape(ctx.Param("tag"))
@@ -76,7 +76,7 @@ func TagArticles(ctx *GoInk.Context) {
 	})
 }
 
-func Home(context *GoInk.Context) {
+func Home(context *fweb.Context) {
 	context.Layout("home")
 	page, _ := strconv.Atoi(context.Param("page"))
 	articles, pager := model.GetPublishArticleList(page, getArticleListSize())
@@ -91,7 +91,7 @@ func Home(context *GoInk.Context) {
 	Theme(context).Layout("home").Render("index", data)
 }
 
-func ListArticles(context *GoInk.Context) {
+func ListArticles(context *fweb.Context) {
 	articles, pager := model.GetArticleList(context.Int("page"), 10)
 	Theme(context).Layout("home").Render("listarticles", map[string]interface{}{
 		"Title":    "文章列表",
@@ -100,7 +100,7 @@ func ListArticles(context *GoInk.Context) {
 	})
 }
 
-func Article(context *GoInk.Context) {
+func Article(context *fweb.Context) {
 	id, _ := strconv.Atoi(context.Param("id"))
 	slug := context.Param("slug")
 	article := model.GetContentById(id)
@@ -120,7 +120,7 @@ func Article(context *GoInk.Context) {
 	})
 }
 
-func Page(context *GoInk.Context) {
+func Page(context *fweb.Context) {
 	id, _ := strconv.Atoi(context.Param("id"))
 	slug := context.Param("slug")
 	article := model.GetContentById(id)
@@ -139,7 +139,7 @@ func Page(context *GoInk.Context) {
 	})
 }
 
-func TopPage(context *GoInk.Context) {
+func TopPage(context *fweb.Context) {
 	slug := context.Param("slug")
 	page := model.GetContentBySlug(slug)
 	if page == nil || page.Status != "publish" {
@@ -157,7 +157,7 @@ func TopPage(context *GoInk.Context) {
 	context.Redirect("/")
 }
 
-func Comment(context *GoInk.Context) {
+func Comment(context *fweb.Context) {
 	cid, _ := strconv.Atoi(context.Param("id"))
 	if cid < 1 {
 		Json(context, false).End()

@@ -3,7 +3,6 @@ package app
 import (
 	"github.com/jack-zh/zGoBlog/app/cmd"
 	"github.com/jack-zh/zGoBlog/app/handler"
-	_ "github.com/jack-zh/zGoBlog/app/upgrade"
 	"os"
 )
 
@@ -21,8 +20,6 @@ func Cmd() {
 			cmd.DoUpdateZipBytes(file)
 		case "backup":
 			cmd.DoBackup(App, true)
-		case "upgrade":
-			cmd.DoUpgrade(VERSION, App)
 		}
 		os.Exit(1)
 	}

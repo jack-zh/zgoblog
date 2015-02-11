@@ -1,14 +1,14 @@
 package handler
 
 import (
-	"github.com/fuxiaohei/GoInk"
+	"github.com/jack-zh/zGoBlog/fweb"
 	"github.com/jack-zh/zGoBlog/app/model"
 	"github.com/jack-zh/zGoBlog/app/utils"
 	"strings"
 	"time"
 )
 
-func SiteMap(ctx *GoInk.Context) {
+func SiteMap(ctx *fweb.Context) {
 	baseUrl := model.GetSetting("site_url")
 	println(baseUrl)
 	article, _ := model.GetPublishArticleList(1, 50)
@@ -53,7 +53,7 @@ func SiteMap(ctx *GoInk.Context) {
 
 }
 
-func Rss(ctx *GoInk.Context) {
+func Rss(ctx *fweb.Context) {
 	baseUrl := model.GetSetting("site_url")
 	article, _ := model.GetPublishArticleList(1, 20)
 	author := model.GetUsersByRole("ADMIN")[0]

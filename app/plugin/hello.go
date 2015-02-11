@@ -2,7 +2,7 @@ package plugin
 
 import (
 	"fmt"
-	"github.com/fuxiaohei/GoInk"
+	"github.com/jack-zh/zGoBlog/fweb"
 	"time"
 )
 
@@ -43,9 +43,9 @@ func (p *HelloPlugin) Activate() {
 		p.isActive = true
 		return
 	}
-	fn := func(context *GoInk.Context) {
+	fn := func(context *fweb.Context) {
 		now := time.Now()
-		context.On(GoInk.CONTEXT_RENDERED, func() {
+		context.On(fweb.CONTEXT_RENDERED, func() {
 			if p.isActive {
 				duration := time.Since(now)
 				str := fmt.Sprint(duration)
@@ -55,7 +55,7 @@ func (p *HelloPlugin) Activate() {
 		})
 	}
 	Handler("hello_plugin", fn, false)
-	/*Route("hello_handler", "GET", "/hello/", func(context *GoInk.Context) {
+	/*Route("hello_handler", "GET", "/hello/", func(context *fweb.Context) {
 		context.Body = []byte("Hello!")
 	})*/
 	p.isHandlerRegistered = true

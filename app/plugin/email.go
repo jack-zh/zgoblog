@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/base64"
 	"fmt"
-	"github.com/fuxiaohei/GoInk"
+	"github.com/jack-zh/zGoBlog/fweb"
 	"github.com/jack-zh/zGoBlog/app/model"
 	"html/template"
 	"net/mail"
@@ -103,7 +103,7 @@ func (p *EmailPlugin) Activate() {
 		model.Storage.Get("plugin/"+p.Key(), &p.settings)
 	}
 	// email middleware handler
-	fn := func(context *GoInk.Context) {
+	fn := func(context *fweb.Context) {
 		context.On("comment_created", func(co interface{}) {
 			if !p.isActive {
 				return

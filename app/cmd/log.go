@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/fuxiaohei/GoInk"
+	"github.com/jack-zh/zGoBlog/fweb"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -13,7 +13,7 @@ type logItem struct {
 	Text       string
 }
 
-func GetLogs(app *GoInk.App) []*logItem {
+func GetLogs(app *fweb.App) []*logItem {
 	dir := app.Get("log_dir")
 	logs := make([]*logItem, 0)
 	filepath.Walk(dir, func(_ string, info os.FileInfo, err error) error {
@@ -40,7 +40,7 @@ func GetLogs(app *GoInk.App) []*logItem {
 	return logs
 }
 
-func RemoveLogFile(app *GoInk.App, file string) {
+func RemoveLogFile(app *fweb.App, file string) {
 	f := filepath.Join(app.Get("log_dir"), file)
 	os.Remove(f)
 }

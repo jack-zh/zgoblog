@@ -1,19 +1,19 @@
 package cmd
 
 import (
-	"github.com/fuxiaohei/GoInk"
+	"github.com/jack-zh/zGoBlog/fweb"
 	"github.com/jack-zh/zGoBlog/app/model"
 	"sort"
 	"strconv"
 )
 
-var upgradeScript map[int]func(app *GoInk.App) bool
+var upgradeScript map[int]func(app *fweb.App) bool
 
 func init() {
-	upgradeScript = make(map[int]func(app *GoInk.App) bool)
+	upgradeScript = make(map[int]func(app *fweb.App) bool)
 }
 
-func SetUpgradeScript(v int, script func(app *GoInk.App) bool) {
+func SetUpgradeScript(v int, script func(app *fweb.App) bool) {
 	upgradeScript[v] = script
 }
 
@@ -27,7 +27,7 @@ func CheckUpgrade(v int, print bool) bool {
 	return b
 }
 
-func DoUpgrade(v int, app *GoInk.App) {
+func DoUpgrade(v int, app *fweb.App) {
 	if !CheckUpgrade(v, false) {
 		println("app version @", v, "is updated")
 		return
