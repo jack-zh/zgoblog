@@ -1,8 +1,6 @@
 #zBlog.Go
 
-A fast and simple blog engine with [GoInk](https://github.com/fuxiaohei/GoInk) framework in Golang.
-
-zGoBlog is forked from [GoBlog](https://github.com/fuxiaohei/GoBlog)
+zGoBlog is forked and edit from [GoBlog](https://github.com/fuxiaohei/GoBlog)
 
 ### Installation
 
@@ -23,11 +21,11 @@ Make a new dir to run `zBlog.Go`:
     cd new_dir
     zGoBlog
 
-Then it will unzip static files in `new_dir` , initialize raw data and start server at `localhost:9001`.
+Then it will unzip static files in `new_dir` , initialize raw data and start server at `localhost:8888`.
 
 ##### Admin
 
-Visit `localhost:9001/login/` to enter administrator with username `admin` and password `admin`. You'd better change them after installed successfully.
+Visit `localhost:8888/login/` to enter administrator with username `admin` and password `admin`. You'd better change them after installed successfully.
 
 ##### Deployment
 
@@ -40,7 +38,7 @@ I prefer to use nginx as proxy. The server section in `nginx.conf`:
                 access_log  /var/log/nginx/your_domain.access.log;
 
                 location / {
-                    proxy_pass http://127.0.0.1:9001;
+                    proxy_pass http://127.0.0.1:8888;
                 }
 
                 location /static {
@@ -66,4 +64,3 @@ Create issues or pull requests here.
 ### License
 
 The MIT License
-
