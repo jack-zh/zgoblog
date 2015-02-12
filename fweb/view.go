@@ -72,7 +72,7 @@ func (v *View) Has(tpl string) bool {
 }
 
 // NoCache sets view cache off and clean cached data.
-func (v *View) NoCache(){
+func (v *View) NoCache() {
 	v.IsCache = false
 	v.templateCache = make(map[string]*template.Template)
 }
