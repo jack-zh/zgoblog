@@ -1,9 +1,24 @@
 package app
 
 import (
+	"fmt"
 	"github.com/jack-zh/zGoBlog/app/cmd"
 	"github.com/jack-zh/zGoBlog/app/handler"
 	"os"
+)
+
+const (
+	__version__ = "0.2"
+	__helpStr__ = `
+COMMANDS:
+	zGoBlog install    -- Install zGoBlog
+	zGoBlog backup     -- Backup data
+	zGoBlog update     -- update zip
+
+GLOBAL OPTIONS:
+	zGoBlog version    -- Show zGoBlog version
+	zGoBlog help       -- Show usage
+`
 )
 
 // Cmd starts command line application.
@@ -20,8 +35,14 @@ func Cmd() {
 			cmd.DoUpdateZipBytes(file)
 		case "backup":
 			cmd.DoBackup(App, true)
+		case "help":
+			fmt.Println(__helpStr__)
+		case "version":
+			fmt.Println(__helpStr__)
+		default:
+			fmt.Println(__helpStr__)
 		}
-		os.Exit(1)
+		os.Exit(0)
 	}
 	// do install and run server together
 	if !cmd.CheckInstall() {
