@@ -38,7 +38,7 @@ func Cmd() {
 		case "help":
 			fmt.Println(__helpStr__)
 		case "version":
-			fmt.Println(__helpStr__)
+			fmt.Println(__version__)
 		default:
 			fmt.Println(__helpStr__)
 		}
