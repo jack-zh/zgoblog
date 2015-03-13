@@ -2,11 +2,11 @@ package app
 
 import (
 	"fmt"
-	"github.com/jack-zh/zGoBlog/fweb"
 	"github.com/jack-zh/zGoBlog/app/handler"
 	"github.com/jack-zh/zGoBlog/app/model"
 	"github.com/jack-zh/zGoBlog/app/plugin"
 	"github.com/jack-zh/zGoBlog/app/utils"
+	"github.com/jack-zh/zGoBlog/fweb"
 	"net/http"
 	"os"
 	"os/signal"
@@ -24,9 +24,9 @@ var (
 	App              *fweb.App
 	staticFileSuffix = ".css,.js,.jpg,.jpeg,.png,.gif,.ico,.xml,.zip,.txt,.html,.otf,.svg,.eot,.woff,.ttf,.doc,.ppt,.xls,.docx,.pptx,.xlsx,.xsl"
 	uploadFileSuffix = ".jpg,.png,.gif,.zip,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-	appServer = "localhost:8888"
-	appLogDir = "tmp/log"
-	appStaticDir = "static"
+	appServer        = "localhost:8888"
+	appLogDir        = "tmp/log"
+	appStaticDir     = "static"
 )
 
 func init() {
@@ -181,6 +181,7 @@ func registerHomeHandler() {
 
 	App.Get("/feed/", handler.Rss)
 	App.Get("/sitemap", handler.SiteMap)
+	App.Get("/geek/", handler.Geek)
 
 	App.Get("/:slug", handler.TopPage)
 	App.Get("/", handler.Home)

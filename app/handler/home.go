@@ -1,9 +1,9 @@
 package handler
 
 import (
-	"github.com/jack-zh/zGoBlog/fweb"
 	"github.com/jack-zh/zGoBlog/app/model"
 	"github.com/jack-zh/zGoBlog/app/utils"
+	"github.com/jack-zh/zGoBlog/fweb"
 	"net/url"
 	"strconv"
 	"strings"
@@ -55,6 +55,11 @@ func Logout(context *fweb.Context) {
 	context.Cookie("token-user", "", "-3600")
 	context.Cookie("token-value", "", "-3600")
 	context.Redirect("/login/")
+}
+
+func Geek(context *fweb.Context) {
+	context.Layout("geek")
+	Theme(context).Layout("geek").Render("geek", nil)
 }
 
 func TagArticles(ctx *fweb.Context) {
