@@ -2,9 +2,9 @@ package cmd
 
 import (
 	"github.com/Unknwon/cae/zip"
-	"github.com/jack-zh/zGoBlog/fweb"
 	"github.com/jack-zh/zGoBlog/app/model"
 	"github.com/jack-zh/zGoBlog/app/utils"
+	"github.com/jack-zh/zGoBlog/fweb"
 	"os"
 	"path"
 	"path/filepath"
@@ -46,6 +46,7 @@ func DoBackup(app *fweb.App, withData bool) (string, error) {
 		}
 	}
 	z.AddDir("static/css", path.Join(root, "static", "css"))
+	z.AddDir("static/jsterm", path.Join(root, "static", "jsterm"))
 	z.AddDir("static/img", path.Join(root, "static", "img"))
 	z.AddDir("static/js", path.Join(root, "static", "js"))
 	z.AddDir("static/lib", path.Join(root, "static", "lib"))
