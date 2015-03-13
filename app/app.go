@@ -19,7 +19,7 @@ import (
 
 var (
 	// APP VERSION, as date version
-	VERSION = 20140228
+	VERSION = 20150314
 	// Global fweb application
 	App              *fweb.App
 	staticFileSuffix = ".css,.js,.jpg,.jpeg,.png,.gif,.ico,.xml,.zip,.txt,.html,.otf,.svg,.eot,.woff,.ttf,.doc,.ppt,.xls,.docx,.pptx,.xlsx,.xsl"

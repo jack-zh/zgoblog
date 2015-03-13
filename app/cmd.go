@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	__version__ = "0.2"
+	__version__ = "zGoBlog version 0.3 build in (2015 03 14)"
 	__helpStr__ = `
 COMMANDS:
 	zGoBlog install    -- Install zGoBlog

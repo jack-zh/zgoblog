@@ -62,7 +62,7 @@ Create issues or pull requests here.
 * [@FuXiaoHei](https://github.com/fuxiaohei)
 
 ### Version
-    0.2
+    0.3
 
 ### License
 
