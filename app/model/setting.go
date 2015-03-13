@@ -76,31 +76,31 @@ func SetNavigators(order []string, text []string, title []string, link []string)
 }
 
 func DefaultNavigators() {
-	n := new(navItem)
-	n.Order = 1
-	n.Text = "文章"
-	n.Title = "文章"
-	n.Link = "/"
+	// n := new(navItem)
+	// n.Order = 1
+	// n.Text = "文章"
+	// n.Title = "文章"
+	// n.Link = "/"
 
-	n1 := new(navItem)
-	n1.Order = 2
-	n1.Text = "列表"
-	n1.Title = "文章列表"
-	n1.Link = "/articles/"
+	// n1 := new(navItem)
+	// n1.Order = 2
+	// n1.Text = "列表"
+	// n1.Title = "文章列表"
+	// n1.Link = "/articles/"
 
-	n2 := new(navItem)
-	n2.Order = 3
-	n2.Text = "Geek"
-	n2.Title = "Geek"
-	n2.Link = "/geek/"
+	// n2 := new(navItem)
+	// n2.Order = 3
+	// n2.Text = "Geek"
+	// n2.Title = "Geek"
+	// n2.Link = "/geek/"
 
-	n3 := new(navItem)
-	n3.Order = 4
-	n3.Text = "关于"
-	n3.Title = "关于"
-	n3.Link = "/about-me.html"
+	// n3 := new(navItem)
+	// n3.Order = 4
+	// n3.Text = "关于"
+	// n3.Title = "关于"
+	// n3.Link = "/about-me.html"
 
-	Storage.Set("navigators", []*navItem{n, n1, n2, n3})
+	// Storage.Set("navigators", []*navItem{n, n1, n2, n3})
 }
 
 func SyncNavigators() {
