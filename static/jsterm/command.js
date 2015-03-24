@@ -128,8 +128,8 @@ COMMANDS.clear = function(argv, cb) {
     );
   }else{
    this._terminal.div.innerHTML = '';
-   cb();
  }
+ cb();
 }
 
 COMMANDS.sudo = function(argv, cb) {
@@ -139,6 +139,7 @@ COMMANDS.sudo = function(argv, cb) {
         ' File "&#x3c;stdin&#x3e;", line 1, in &#x3c;module&#x3e;<br>'+
         'ImportError: No module named '+ "sudo"
     );
+    cb();
   }else{
    var count = 0;
    this._terminal.returnHandler = function() {
@@ -286,6 +287,7 @@ COMMANDS.login = function(argv, cb) {
         ' File "&#x3c;stdin&#x3e;", line 1, in &#x3c;module&#x3e;<br>'+
         'ImportError: No module named '+ "login"
     );
+    cb();
   }else{
      this._terminal.returnHandler = function() {
         var username = this.stdout().innerHTML;
