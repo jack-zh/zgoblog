@@ -53,6 +53,10 @@ I prefer to use nginx as proxy. The server section in `nginx.conf`:
 
 Create issues or pull requests here.
 
+### Note
+
+You can edit `static/hsterm/config.js` to set your geek message from menu.
+
 ### Products
 
 * [Jack.zh's 一声叹息](http://link-pub.cn)
