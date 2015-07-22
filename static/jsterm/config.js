@@ -1,5 +1,5 @@
 var CONFIG = CONFIG || {
-	python_version: 'Python 2.7.9',
+	python_version: 'Python 2.7.10',
 	gcc_version: '4.8.2',
 	sys_platform: 'linux2',
 	username: 'jack',

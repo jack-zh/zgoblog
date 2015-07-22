@@ -30,7 +30,7 @@
             {
                "name": "Golang",
                "type": "text",
-               "contents": "Golang深度学习者"
+               "contents": "Golang学习者"
             },
             {
                "name": "FrontEnd",
