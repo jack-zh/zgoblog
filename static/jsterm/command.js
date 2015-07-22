@@ -225,7 +225,6 @@ function writeContactInformation(dict){
     if("info" in dict){
       writeStr += dict['info'] + " :<br>" + dict['value'] + "</a>";
     }else{
-      console.log(3)
       writeStr += dict['value'];
     }
   }
@@ -264,6 +263,9 @@ COMMANDS.__username__action__ = function(argv, cb) {
         this._terminal.write(
           writeStr
           );
+      }else if (attr=='email()') {
+        var href = "mailto:" + ContactInformation["email"]["value"]; 
+        window.location.href = href; 
       }else{
         this._terminal.write(
             'Traceback (most recent call last):<br>'+
