@@ -1,6 +1,6 @@
 package app
 
-import "github.com/jack-zh/zGoBlog/app/handler"
+import "github.com/jack-zh/zgoblog/app/handler"
 
 func registerAdminHandler() {
 	// add admin handlers

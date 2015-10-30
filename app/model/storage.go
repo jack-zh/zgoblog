@@ -2,7 +2,7 @@ package model
 
 import (
 	"encoding/json"
-	"github.com/jack-zh/zGoBlog/app/utils"
+	"github.com/jack-zh/zgoblog/app/utils"
 	"io/ioutil"
 	"os"
 	"path"

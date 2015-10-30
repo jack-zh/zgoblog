@@ -2,7 +2,7 @@ package plugin
 
 import (
 	"fmt"
-	"github.com/jack-zh/zGoBlog/fweb"
+	"github.com/jack-zh/zgoblog/fweb"
 	"time"
 )
 

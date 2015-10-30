@@ -2,22 +2,22 @@ package app
 
 import (
 	"fmt"
-	"github.com/jack-zh/zGoBlog/app/cmd"
-	"github.com/jack-zh/zGoBlog/app/handler"
+	"github.com/jack-zh/zgoblog/app/cmd"
+	"github.com/jack-zh/zgoblog/app/handler"
 	"os"
 )
 
 const (
-	__version__ = "zGoBlog version 0.3 build in (2015 03 14)"
+	__version__ = "zgoblog version 0.3 build in (2015 03 14)"
 	__helpStr__ = `
 COMMANDS:
-	zGoBlog install    -- Install zGoBlog
-	zGoBlog backup     -- Backup data
-	zGoBlog update     -- update zip
+	zgoblog install    -- Install zgoblog
+	zgoblog backup     -- Backup data
+	zgoblog update     -- update zip
 
 GLOBAL OPTIONS:
-	zGoBlog version    -- Show zGoBlog version
-	zGoBlog help       -- Show usage
+	zgoblog version    -- Show zgoblog version
+	zgoblog help       -- Show usage
 `
 )
 

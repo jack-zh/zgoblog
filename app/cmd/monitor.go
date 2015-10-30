@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/jack-zh/zGoBlog/app/utils"
+	"github.com/jack-zh/zgoblog/app/utils"
 	"runtime"
 	"time"
 )

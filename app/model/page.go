@@ -1,6 +1,6 @@
 package model
 
-import "github.com/jack-zh/zGoBlog/app/utils"
+import "github.com/jack-zh/zgoblog/app/utils"
 
 // GetPageList gets pages list and pager no matter page status.
 // In common cases, no need to get a list or pagers for public page.

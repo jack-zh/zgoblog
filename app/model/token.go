@@ -2,8 +2,8 @@ package model
 
 import (
 	"fmt"
-	"github.com/jack-zh/zGoBlog/fweb"
-	"github.com/jack-zh/zGoBlog/app/utils"
+	"github.com/jack-zh/zgoblog/fweb"
+	"github.com/jack-zh/zgoblog/app/utils"
 )
 
 var tokens map[string]*Token

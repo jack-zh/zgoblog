@@ -1,9 +1,9 @@
 package handler
 
 import (
-	"github.com/jack-zh/zGoBlog/fweb"
-	"github.com/jack-zh/zGoBlog/app/cmd"
-	"github.com/jack-zh/zGoBlog/app/model"
+	"github.com/jack-zh/zgoblog/fweb"
+	"github.com/jack-zh/zgoblog/app/cmd"
+	"github.com/jack-zh/zgoblog/app/model"
 )
 
 func CmdBackup(context *fweb.Context) {

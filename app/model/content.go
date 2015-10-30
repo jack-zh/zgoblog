@@ -3,7 +3,7 @@ package model
 import (
 	"errors"
 	"fmt"
-	"github.com/jack-zh/zGoBlog/app/utils"
+	"github.com/jack-zh/zgoblog/app/utils"
 	"net/url"
 	"os"
 	"path/filepath"

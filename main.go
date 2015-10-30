@@ -1,6 +1,6 @@
 package main
 
-import "github.com/jack-zh/zGoBlog/app"
+import "github.com/jack-zh/zgoblog/app"
 
 func main() {
 	app.Cmd()

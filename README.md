@@ -1,6 +1,6 @@
 #zBlog.Go
 
-zGoBlog is forked and edit from [GoBlog](https://github.com/fuxiaohei/GoBlog)
+zgoblog is forked and edit from [GoBlog](https://github.com/fuxiaohei/GoBlog)
 
 ### Installation
 
@@ -10,7 +10,7 @@ zGoBlog is forked and edit from [GoBlog](https://github.com/fuxiaohei/GoBlog)
 
 Use go get command:
 
-    go get github.com/jack-zh/zGoBlog
+    go get github.com/jack-zh/zgoblog
 
 Then you can find binary file `GoBlog(.exe)` in `$GOPATH/bin`.
 
@@ -19,7 +19,7 @@ Then you can find binary file `GoBlog(.exe)` in `$GOPATH/bin`.
 Make a new dir to run `zBlog.Go`:
 
     cd new_dir
-    zGoBlog
+    zgoblog
 
 Then it will unzip static files in `new_dir` , initialize raw data and start server at `localhost:8888`.
 

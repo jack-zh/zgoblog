@@ -1,6 +1,6 @@
 package model
 
-import "github.com/jack-zh/zGoBlog/app/utils"
+import "github.com/jack-zh/zgoblog/app/utils"
 
 func generatePublishArticleIndex() {
 	arr := make([]int, 0)

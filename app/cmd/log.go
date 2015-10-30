@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/jack-zh/zGoBlog/fweb"
+	"github.com/jack-zh/zgoblog/fweb"
 	"io/ioutil"
 	"os"
 	"path/filepath"

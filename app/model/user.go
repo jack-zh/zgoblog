@@ -2,7 +2,7 @@ package model
 
 import (
 	"errors"
-	"github.com/jack-zh/zGoBlog/app/utils"
+	"github.com/jack-zh/zgoblog/app/utils"
 )
 
 var (

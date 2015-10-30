@@ -5,7 +5,7 @@ import (
 	"encoding/base64"
 	"fmt"
 	"github.com/Unknwon/cae/zip"
-	"github.com/jack-zh/zGoBlog/app/utils"
+	"github.com/jack-zh/zgoblog/app/utils"
 	"io/ioutil"
 	"os"
 )

@@ -1,7 +1,7 @@
 package model
 
 import (
-	"github.com/jack-zh/zGoBlog/app/utils"
+	"github.com/jack-zh/zgoblog/app/utils"
 	"os"
 	"path"
 	"strconv"

@@ -1,9 +1,9 @@
 package handler
 
 import (
-	"github.com/jack-zh/zGoBlog/fweb"
-	"github.com/jack-zh/zGoBlog/app/model"
-	"github.com/jack-zh/zGoBlog/app/utils"
+	"github.com/jack-zh/zgoblog/fweb"
+	"github.com/jack-zh/zgoblog/app/model"
+	"github.com/jack-zh/zgoblog/app/utils"
 	"strings"
 	"time"
 )
