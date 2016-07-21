@@ -24,7 +24,7 @@ var (
 	App              *fweb.App
 	staticFileSuffix = ".css,.js,.jpg,.jpeg,.png,.gif,.ico,.xml,.zip,.txt,.html,.otf,.svg,.eot,.woff,.ttf,.doc,.ppt,.xls,.docx,.pptx,.xlsx,.xsl"
 	uploadFileSuffix = ".jpg,.png,.gif,.zip,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-	appServer        = "localhost:8888"
+	appServer        = "localhost:8080"
 	appLogDir        = "tmp/log"
 	appStaticDir     = "static"
 )
