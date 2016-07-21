@@ -21,11 +21,11 @@ Make a new dir to run `zBlog.Go`:
     cd new_dir
     zgoblog
 
-Then it will unzip static files in `new_dir` , initialize raw data and start server at `localhost:8888`.
+Then it will unzip static files in `new_dir` , initialize raw data and start server at `localhost:8080`.
 
 ##### Admin
 
-Visit `localhost:8888/login/` to enter administrator with username `admin` and password `admin`. You'd better change them after installed successfully.
+Visit `localhost:8080/login/` to enter administrator with username `admin` and password `admin`. You'd better change them after installed successfully.
 
 ##### Deployment
 
@@ -38,7 +38,7 @@ I prefer to use nginx as proxy. The server section in `nginx.conf`:
                 access_log  /var/log/nginx/your_domain.access.log;
 
                 location / {
-                    proxy_pass http://127.0.0.1:8888;
+                    proxy_pass http://127.0.0.1:8080;
                 }
 
                 location /static {

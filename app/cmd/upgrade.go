@@ -21,8 +21,11 @@ func CheckUpgrade(v int, print bool) bool {
 	model.Init(v)
 	appV := model.GetVersion()
 	b := v > appV.Version
+	if b {
+		b := v <= appV.Version
+	}
 	if b && print {
-		println("app version @ " + strconv.Itoa(v) + " is ahead of current version @ " + strconv.Itoa(appV.Version) + " , please run 'GoBlog upgrade'")
+		println("app version @ " + strconv.Itoa(v) + " is ahead of current version @ " + strconv.Itoa(appV.Version) + " , please run 'zgoblog upgrade'")
 	}
 	return b
 }
